@@ -45,7 +45,7 @@ A 1090 MHz ADS-B receiver system tracking aircraft over Portland, OR, paired wit
 
 **Receiver**
 
-- RTL-SDR Blog V4 with software-activatable bias tee
+- Nooelec NESDR SMArt v5 SDR with software-activatable bias tee
 - dump1090 decode on Raspberry Pi 5
 - Coverage: PDX airspace (~130-140 nm radius)
 

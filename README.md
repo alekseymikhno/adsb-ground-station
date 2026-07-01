@@ -8,10 +8,6 @@ A complete 1090 MHz ADS-B receiver system tracking aircraft over Portland, OR, w
 - **Custom RF front end**: Fully designed (Friis cascade: ~2.85 dB NF, +32 dB gain target), pending PCB fabrication
 - **Anomaly detection**: LLM analysis pipeline in development
 
-## System Architecture
-
-[Insert architecture diagram here — or reference docs/system-architecture.png]
-
 ## What It Does
 
 1. **RF capture**: 1090 MHz antenna → filter-LNA-filter chain → RTL-SDR Blog V4 I/Q sampler

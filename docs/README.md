@@ -1,3 +1,3 @@
 # Documentation
 
-System diagrams, cascade analysis, photos, and reference materials.
+System diagrams, photos, and reference materials.

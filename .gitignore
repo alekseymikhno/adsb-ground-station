@@ -25,3 +25,12 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# KiCad
+*.kicad_pcb-bak
+*.sch-bak
+*.kicad_sch-bak
+*-cache.lib
+fp-info-cache
+.kicad_fp-info-cache
+.history/

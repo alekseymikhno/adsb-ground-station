@@ -1,19 +1,19 @@
-# ADS-B 1090 MHz Ground Station — PDX Airspace
+# ADS-B 1090 MHz Ground Station (PDX Airspace)
 
 A 1090 MHz ADS-B receiver system tracking aircraft over Portland, OR, paired with an in-progress custom RF front end and an LLM-based anomaly-detection pipeline.
 
 ## Status
 
 - **Pi 5 receiver**: Live and collecting flight data (May–July 2026)
-- **Custom RF front end**: In design — 1090 MHz filter-LNA (TA1090EC SAW + PGA-103+). Schematic and QucsStudio simulation complete (~13.3 dB cascade gain, ~3.2 dB NF); not yet sent to fabrication.
+- **Custom RF front end**: In design: 1090 MHz filter-LNA (TA1090EC SAW + PGA-103+). Schematic and QucsStudio simulation complete (~13.3 dB cascade gain, ~3.2 dB NF); not yet sent to fabrication.
 - **Anomaly detection**: LLM analysis pipeline in development
 
 ## What It Does
 
-1. **RF capture**: 1090 MHz antenna → TA1090EC SAW filter → PGA-103+ LNA → RTL-SDR Blog V4 I/Q sampler
+1. **RF capture**: 1090 MHz antenna -> TA1090EC SAW filter -> PGA-103+ LNA -> Nooelec NESDR SMArt v5 SDR
 2. **Decode**: Raspberry Pi 5 runs dump1090 to decode Mode S / ADS-B messages in real time
 3. **Analysis**: LLM-based anomaly detector flags unusual flight patterns over PDX airspace
-4. **Output**: Logged to SQLite, served via web dashboard
+4. **Output**: Logged to SQLite, served via web dashboard with a Tar1090 UI
 
 ## Folder Structure
 
@@ -27,7 +27,7 @@ A 1090 MHz ADS-B receiver system tracking aircraft over Portland, OR, paired wit
 
 ## Key Specs
 
-**RF Front End — 1090 MHz Filter-LNA (TA1090EC + PGA-103+)**
+**RF Front End: 1090 MHz Filter-LNA (TA1090EC + PGA-103+)**
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
@@ -47,11 +47,11 @@ A 1090 MHz ADS-B receiver system tracking aircraft over Portland, OR, paired wit
 
 - RTL-SDR Blog V4 with software-activatable bias tee
 - dump1090 decode on Raspberry Pi 5
-- Coverage: PDX airspace (~80 nm radius)
+- Coverage: PDX airspace (~130-140 nm radius)
 
 ## Design Notes
 
-The front end places a SAW filter ahead of the LNA (filter-first topology). This trades a small noise-figure penalty — the filter's ~2.3 dB insertion loss adds directly to system NF per the Friis equation — for out-of-band rejection of FM broadcast, cellular, and GSM signals that would otherwise overload the SDR in a high-RF environment near an airport. The PGA-103+ was chosen for its sub-1 dB noise figure and 50 Ω matched ports requiring no external matching network.
+The front end places a SAW filter ahead of the LNA (filter-first topology). This trades a small noise-figure penalty, the filter's ~2.3 dB insertion loss adds directly to system NF per the Friis equation, for out-of-band rejection of FM broadcast, cellular, and GSM signals that would otherwise overload the SDR in a high-RF environment near an airport. The PGA-103+ was chosen for its sub-1 dB noise figure and 50 Ω matched ports requiring no external matching network.
 
 ## Roadmap
 
